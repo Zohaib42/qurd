@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <div class="text-center">
+        <% if @member.present? %>
+          <%= image_tag 'checked.png', width: 250 %>
+          <h1 class="display-4 mb-4">Email confirmed!</h1>
+
+          <p>You can now return to the mobile app and click 'Verify'.</p>
+        <% else %>
+          <%= image_tag 'cross.png', width: 250 %>
+          <h1 class="display-4 mb-4">Oops!</h1>
+
+          <p>Could not confirm your email address</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

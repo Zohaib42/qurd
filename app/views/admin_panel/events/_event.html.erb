@@ -1,0 +1,20 @@
+<tr id="<%= dom_id(event) %>">
+  <th scope="row"><%= event.id %></th>
+  <td><%= event.title %></td>
+  <td><%= event.start_at.strftime("%d %B %Y") %></td>
+  <td><%= event.price %></td>
+  <td class="icon">
+    <%= link_to export_rsvp_admin_panel_event_path(event), class: 'ml-1 mr-1', data: { toggle: 'tooltip' }, title: 'Export RSVPs' do %>
+      <i class="fas fa-file-export"></i>
+    <% end %>
+
+    <%= link_to edit_admin_panel_event_path(event), class: 'ml-1 mr-1', remote: true, data: { toggle: 'tooltip' }, title: 'Edit Event' do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
+
+    <%= link_to admin_panel_event_path(event), class: 'ml-1 mr-1', method: :delete, remote: true, data: { confirm:  'Are you sure, you want to delete event?', toggle: 'tooltip' }, title: 'Delete Event' do %>
+      <i class="fas fa-trash"></i>
+    <% end %>
+  </td>
+</tr>
+

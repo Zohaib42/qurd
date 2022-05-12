@@ -1,0 +1,4 @@
+$("#post-reports").html("<%= j render('post_reports', post_reports: @post_reports) %>")
+$(".report_paginate").html("<%= j (paginate(@post_reports, remote: true, param_name: :post_report_page )) %>")
+$("#user-reports").html("<%= j render('member_reports', member_reports: @member_reports) %>")
+$(".member_paginate").html("<%= j (paginate(@member_reports, remote: true )) %>")

@@ -1,0 +1,2183 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "basePath": "/api/v1",
+  "paths": {
+    "/accounts/resend_confirmation": {
+      "get": {
+        "summary": "Resend Confirmation",
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "resend_confirmation",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "When resend email is not sent before 10 minutes"
+          }
+        }
+      }
+    },
+    "/accounts/reset_password_link": {
+      "post": {
+        "summary": "Reset Password Link",
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "reset_password_link",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "account",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/reset_password_link"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          },
+          "404": {
+            "description": "Returns not found"
+          }
+        }
+      }
+    },
+    "/accounts/confirmation_status": {
+      "get": {
+        "summary": "Email Confirmation status",
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "confirmation_status",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          },
+          "401": {
+            "description": "Returns unprocessable_entity response"
+          }
+        }
+      }
+    },
+    "/accounts/change_password": {
+      "post": {
+        "summary": "Change password",
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "change_password",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "account",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/change_password"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          }
+        }
+      }
+    },
+    "/accounts/suggestions": {
+      "get": {
+        "summary": "Member suggestions",
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "Member Suggestions",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns empty array"
+          }
+        }
+      }
+    },
+    "/block_members": {
+      "post": {
+        "summary": "create_block_member",
+        "tags": [
+          "BlockMember"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "create_block_member",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "block_member",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/block_member"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          },
+          "422": {
+            "description": "Returns unprocessable response"
+          }
+        }
+      }
+    },
+    "/block_members/{block_member_id}/destroy": {
+      "delete": {
+        "summary": "delete_block_member",
+        "tags": [
+          "BlockMember"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "delete_block_member",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "block_member_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          },
+          "404": {
+            "description": "Returns not found response"
+          }
+        }
+      }
+    },
+    "/colleges": {
+      "get": {
+        "summary": "Colleges with members",
+        "tags": [
+          "Colleges"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "colleges",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "term",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returns searched colleges"
+          }
+        }
+      }
+    },
+    "/posts/{post_id}/comments": {
+      "get": {
+        "summary": "fetch comments",
+        "tags": [
+          "Comments"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "fetch_comments",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get comments for a post"
+          }
+        }
+      },
+      "post": {
+        "summary": "create new comment",
+        "tags": [
+          "Comments"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "create_comment",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "comment",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/comment"
+            }
+          },
+          {
+            "name": "post_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "comment created"
+          }
+        }
+      }
+    },
+    "/posts/{post_id}/comments/{id}": {
+      "delete": {
+        "summary": "delete user comment",
+        "tags": [
+          "Comments"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "delete comment",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "delete user comment"
+          },
+          "403": {
+            "description": "Forbidden to delete comment"
+          }
+        }
+      }
+    },
+    "/devices": {
+      "post": {
+        "summary": "create new Device Token",
+        "tags": [
+          "Device Token"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "create_device_token",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "device",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/device"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Device Token created"
+          },
+          "422": {
+            "description": "Device Token created"
+          }
+        }
+      }
+    },
+    "/events": {
+      "get": {
+        "summary": "Listing events",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "listing_events",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          }
+        }
+      }
+    },
+    "/events/{id}": {
+      "get": {
+        "summary": "Show event",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "show_event",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          },
+          "404": {
+            "description": "Returns not found response"
+          }
+        }
+      }
+    },
+    "/feeds": {
+      "get": {
+        "summary": "fetch feed",
+        "tags": [
+          "Feed"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "fetch_comments",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "return success response"
+          }
+        }
+      }
+    },
+    "/groups": {
+      "get": {
+        "summary": "Groups Listing",
+        "tags": [
+          "Group"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "GroupsListing",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "returns success response"
+          }
+        }
+      },
+      "post": {
+        "summary": "create new Group",
+        "tags": [
+          "Group"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "create_group",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "group",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/group"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "returns success response"
+          }
+        }
+      }
+    },
+    "/groups/{id}": {
+      "get": {
+        "summary": "Group Details",
+        "tags": [
+          "Group"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "show group",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "returns success response"
+          }
+        }
+      },
+      "patch": {
+        "summary": "update Group",
+        "tags": [
+          "Group"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "update_group",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "group",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/group"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "returns success response"
+          },
+          "422": {
+            "description": "returns unprocessable response"
+          },
+          "404": {
+            "description": "returns record not found response"
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete Group",
+        "tags": [
+          "Group"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "delete_group",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "returns success response"
+          },
+          "404": {
+            "description": "returns record not found response"
+          }
+        }
+      }
+    },
+    "/groups/{id}/leave_group": {
+      "post": {
+        "summary": "leave group",
+        "tags": [
+          "Group"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "leave_group",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "leave_group",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/leave_group"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "returns success response"
+          },
+          "404": {
+            "description": "returns record not found response"
+          }
+        }
+      }
+    },
+    "/groups/{id}/read_conversation/{member_id}": {
+      "get": {
+        "summary": "Read Conversation",
+        "tags": [
+          "Group"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "read_conversation",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "member_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "returns success response"
+          },
+          "422": {
+            "description": "returns unprocessable entity"
+          }
+        }
+      }
+    },
+    "/posts/{post_id}/likes": {
+      "post": {
+        "summary": "create new applause",
+        "tags": [
+          "Applause"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "create_applause",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "applause created"
+          }
+        }
+      },
+      "delete": {
+        "summary": "undo post applause",
+        "tags": [
+          "Applause"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "undo_applause",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "undo post applause"
+          }
+        }
+      }
+    },
+    "/member_reports": {
+      "post": {
+        "summary": "Create member report",
+        "tags": [
+          "MemberReport"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "create_member_report",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "member_report",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/member_report"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          },
+          "422": {
+            "description": "Returns unprocessable response"
+          }
+        }
+      }
+    },
+    "/member_reports/{member_report_id}/destroy": {
+      "delete": {
+        "summary": "Delete member report",
+        "tags": [
+          "MemberReport"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "delete_member_report",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "member_report_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          },
+          "404": {
+            "description": "Returns not found response"
+          }
+        }
+      }
+    },
+    "/members": {
+      "get": {
+        "summary": "Get all members. Filter members",
+        "tags": [
+          "Members"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "search_member_by_skills",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "term",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skills[]",
+            "in": "query",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "looking_for_skills[]",
+            "in": "query",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "college_id",
+            "in": "query",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully return members"
+          }
+        }
+      },
+      "post": {
+        "summary": "Member Registration",
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "registration",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sign_up",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/sign_up"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfull Registration"
+          },
+          "422": {
+            "description": "Invalid Registration"
+          }
+        }
+      }
+    },
+    "/members/{member_id}/follow": {
+      "get": {
+        "summary": "follow member",
+        "tags": [
+          "Members"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "follow_member",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "member_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response."
+          },
+          "422": {
+            "description": "Returns unprocessable_entity response when following self."
+          }
+        }
+      }
+    },
+    "/members/bulk_follow": {
+      "post": {
+        "summary": "follow list of members",
+        "tags": [
+          "Members"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bulk_follow",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/bulk_follow"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          }
+        }
+      }
+    },
+    "/members/{member_id}/unfollow": {
+      "get": {
+        "summary": "unfollow member",
+        "tags": [
+          "Members"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "unfollow_member",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "member_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response."
+          },
+          "404": {
+            "description": "Returns not found response."
+          }
+        }
+      }
+    },
+    "/members/{id}/profile": {
+      "get": {
+        "summary": "Member Profile",
+        "tags": [
+          "Members"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "profile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully return profile"
+          },
+          "422": {
+            "description": "Returns unprocessable response"
+          },
+          "404": {
+            "description": "Returns not found"
+          }
+        }
+      }
+    },
+    "/members/followers_list": {
+      "get": {
+        "summary": "Members list",
+        "tags": [
+          "Members"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "Followers List",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "term",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully return members"
+          }
+        }
+      }
+    },
+    "/members/logout": {
+      "delete": {
+        "summary": "Logout",
+        "tags": [
+          "Members"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "Logout",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully Logout"
+          }
+        }
+      }
+    },
+    "/notifications": {
+      "get": {
+        "summary": "Get all notifications",
+        "tags": [
+          "Notifications"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "all_notifications",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully return members"
+          }
+        }
+      }
+    },
+    "/notifications/{id}/read": {
+      "get": {
+        "summary": "read notifications",
+        "tags": [
+          "Notifications"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "read_notifications",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          }
+        }
+      }
+    },
+    "/onboarding": {
+      "post": {
+        "summary": "Skills Interests and member Information",
+        "tags": [
+          "On-boarding"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "onboarding_member",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "onboarding",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/onboarding"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful On-boarding"
+          },
+          "422": {
+            "description": "Error On-boarding"
+          }
+        }
+      }
+    },
+    "/post_reports": {
+      "post": {
+        "summary": "Create post report",
+        "tags": [
+          "PostReport"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "create_post_report",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "post_report",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/post_report"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          }
+        }
+      }
+    },
+    "/post_reports/{post_report_id}/destroy": {
+      "delete": {
+        "summary": "Delete post report",
+        "tags": [
+          "PostReport"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "delete_post_report",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "post_report_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          },
+          "404": {
+            "description": "Returns not found response"
+          }
+        }
+      }
+    },
+    "/posts": {
+      "get": {
+        "summary": "posts feed",
+        "tags": [
+          "Posts"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "posts_feed",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully return posts"
+          }
+        }
+      },
+      "post": {
+        "summary": "Post create",
+        "tags": [
+          "Posts"
+        ],
+        "operationId": "create_post",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "post_payload",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "post created successfully"
+          }
+        }
+      }
+    },
+    "/posts/{id}": {
+      "get": {
+        "summary": "post show",
+        "tags": [
+          "Posts"
+        ],
+        "operationId": "show_post",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          },
+          "404": {
+            "description": "Returns not found response"
+          }
+        }
+      },
+      "delete": {
+        "summary": "destroy post",
+        "tags": [
+          "Posts"
+        ],
+        "operationId": "destroy_post",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          },
+          "404": {
+            "description": "Returns not found response"
+          }
+        }
+      }
+    },
+    "/rsvps": {
+      "post": {
+        "summary": "rsvp create",
+        "tags": [
+          "RSVP"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "create_rsvp",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "rsvp",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/rsvp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          }
+        }
+      }
+    },
+    "/rsvps/{event_id}": {
+      "delete": {
+        "summary": "rsvp destroy",
+        "tags": [
+          "RSVP"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "destroy_rsvp",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "event_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          },
+          "404": {
+            "description": "Returns not found response"
+          }
+        }
+      }
+    },
+    "/members/login": {
+      "post": {
+        "summary": "Member Login",
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "login",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sign_in",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfull Login"
+          }
+        }
+      }
+    },
+    "/posts/{post_id}/shares": {
+      "post": {
+        "summary": "Echo a post again",
+        "tags": [
+          "Echos"
+        ],
+        "operationId": "re_echo_post",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "re-echoing a post returns success"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Undo echo",
+        "tags": [
+          "Echos"
+        ],
+        "operationId": "undo_echo",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "undoing an echo returns success"
+          },
+          "404": {
+            "description": "undoing another member's echo returns 404"
+          }
+        }
+      }
+    },
+    "/skills": {
+      "get": {
+        "summary": "Skills and Interests",
+        "tags": [
+          "Skills"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "skills_and_interests",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully return skills and interests"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ],
+      "example": {
+        "sign_in": {
+          "email": "nkdev@oxford.edu.eng",
+          "password": "password"
+        }
+      }
+    },
+    "reset_password_link": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "email": "nkdev@oxford.edu.eng"
+      }
+    },
+    "account_change_password": {
+      "type": "object",
+      "properties": {
+        "old_password": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "confirm_password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "first_name",
+        "last_name",
+        "email",
+        "mobile"
+      ],
+      "example": {
+        "account": {
+          "old_password": "P4ssw0rd#!",
+          "password": "w0rdP4ss#!",
+          "password_confirmation": "w0rdP4ss#!"
+        }
+      }
+    },
+    "account_update": {
+      "type": "object",
+      "properties": {
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "account": {
+          "first_name": "Samuel",
+          "last_name": "Black",
+          "mobile": "+33 4 55 44 33"
+        }
+      }
+    },
+    "change_password": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        },
+        "password_confirmation": {
+          "type": "string"
+        },
+        "current_password": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "password": "example",
+        "password_confirmation": "example",
+        "current_password": "password"
+      }
+    },
+    "sign_up": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "website_url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password",
+        "name",
+        "username",
+        "mobile"
+      ],
+      "example": {
+        "sign_up": {
+          "email": "nkdev@oxford.edu.eng",
+          "password": "password",
+          "name": "Samuel Black",
+          "username": "samuelblack1",
+          "mobile": "(555) 555-1234",
+          "website_url": "example.com"
+        }
+      }
+    },
+    "rsvp": {
+      "type": "object",
+      "properties": {
+        "event_id": {
+          "type": "integer"
+        }
+      },
+      "example": {
+        "rsvp": {
+          "event_id": 1
+        }
+      }
+    },
+    "onboarding": {
+      "type": "object",
+      "properties": {
+        "member_attributes": {
+          "type": "object",
+          "properties": {
+            "pronouns": {
+              "type": "string"
+            },
+            "website_url": {
+              "type": "string"
+            },
+            "image": {
+              "type": "file"
+            },
+            "star_sign": {
+              "type": "string"
+            }
+          }
+        },
+        "skills": {
+          "type": "array"
+        },
+        "interests": {
+          "type": "array"
+        }
+      },
+      "example": {
+        "onboarding": {
+          "member_attributes": {
+            "pronouns": "He/Him",
+            "website_url": "example.com",
+            "star_sign": "Aries",
+            "image": "file/attachment"
+          },
+          "skills": [
+            "Rapper",
+            "Singing",
+            "dancing"
+          ],
+          "interests": [
+            "director",
+            "producer",
+            "choreographer"
+          ]
+        }
+      }
+    },
+    "members": {
+      "type": "object",
+      "properties": {
+        "term": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array"
+        },
+        "looking_for_skills": {
+          "type": "array"
+        },
+        "college_id": {
+          "type": "integer"
+        }
+      },
+      "example": {
+        "term": "abc",
+        "skills": [
+          1,
+          2
+        ],
+        "looking_for_skills": [
+          1,
+          2
+        ],
+        "college_id": 1
+      }
+    },
+    "follow_member": {
+      "type": "object",
+      "properties": {
+        "member_id": {
+          "type": "integer"
+        }
+      },
+      "example": {
+        "member_id": 1
+      }
+    },
+    "post": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "post_type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "text"
+        },
+        "attachment": {
+          "type": "file"
+        }
+      },
+      "example": {
+        "post": {
+          "title": "abc",
+          "post_type": "image",
+          "description": "xyz",
+          "attachment": "this-is-sample-attribute-will-not-work-with-swagger",
+          "share_type": "link",
+          "link": "https://www.google.com"
+        }
+      }
+    },
+    "comment": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "text"
+        },
+        "member_ids": {
+          "type": "array"
+        }
+      },
+      "example": {
+        "comment": {
+          "content": "abc",
+          "tagged_member_ids": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    "share": {
+      "type": "object",
+      "properties": {
+      },
+      "example": {
+        "share": {
+        }
+      }
+    },
+    "leave_group": {
+      "type": "object",
+      "properties": {
+        "member_id": "integer"
+      },
+      "example": {
+        "leave_group": {
+          "member_id": 1
+        }
+      }
+    },
+    "group": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "image": {
+          "type": "file"
+        },
+        "chat_type": {
+          "type": "string"
+        },
+        "member_ids": {
+          "type": "array"
+        }
+      },
+      "example": {
+        "group": {
+          "name": "abc",
+          "image": "file-attachment",
+          "chat_type": "channel",
+          "member_ids": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    "device": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "device": {
+          "token": "Abcd#1234",
+          "platform": "android"
+        }
+      }
+    },
+    "post_report": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "text"
+        },
+        "post_id": {
+          "type": "integer"
+        }
+      },
+      "example": {
+        "post_report": {
+          "reason": "abc",
+          "post_id": 1
+        }
+      }
+    },
+    "member_report": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "text"
+        },
+        "reporter_id": {
+          "type": "integer"
+        }
+      },
+      "example": {
+        "member_report": {
+          "reason": "abc",
+          "reported_id": 1
+        }
+      }
+    },
+    "block_member": {
+      "type": "object",
+      "properties": {
+        "member_id": {
+          "type": "integer"
+        }
+      },
+      "example": {
+        "block_member": {
+          "member_id": 1
+        }
+      }
+    },
+    "bulk_follow": {
+      "type": "object",
+      "properties": {
+        "member_ids": {
+          "type": "array"
+        }
+      },
+      "example": {
+        "bulk_follow": {
+          "member_ids": [
+            1,
+            2
+          ]
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "in": "header",
+      "description": "JWT Authorization header using the Bearer scheme. Example: Authorization: Bearer {token}",
+      "name": "Authorization"
+    }
+  }
+}

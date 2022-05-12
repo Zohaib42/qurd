@@ -1,0 +1,21 @@
+<table class="table table-borderless table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Event Name</th>
+      <th scope="col">Start At</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+
+  <tbody id="events-section">
+    <% events.each do |event| %>
+      <%= render 'admin_panel/events/event', event: event %>
+    <% end %>
+  </tbody>
+</table>
+
+<div id="upcoming-events-pagination">
+  <%= paginate events, remote: true, param_name: :upcoming_events_page %>
+</div>

@@ -1,0 +1,10 @@
+<% if flash[:error] -%>
+  <p class='d-none error-mg'><%= h flash[:error] %></p>
+<% end -%>
+<% if flash[:alert] -%>
+  <p class='d-none alert-mg'><%= h flash[:alert] %></p>
+<% end -%>
+<% if flash[:notice] -%>
+  <p class='d-none notice-mg'><%= h flash[:notice] %></p>
+<% end -%>
+

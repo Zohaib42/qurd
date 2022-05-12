@@ -1,0 +1,4 @@
+Quadio.Utility.showFormError('#user_form', 'user', <%= @user.errors.messages.to_json.html_safe %>);
+<% if @user.errors.blank? %>
+  Quadio.Utility.toastSuccess('<%= t('custom.messages.user.update') %>');
+<% end %>

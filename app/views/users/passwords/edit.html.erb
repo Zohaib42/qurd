@@ -1,0 +1,27 @@
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: 'form-signin text-center', method: :put }) do |f| %>
+
+<%= image_tag 'logo.jpg', class: 'mb-4', width: 72, height: 72 %>  
+  
+  <%= render 'shared/error', object: resource %>
+  <%= f.hidden_field :reset_password_token %>
+  <h1 class="h3 mb-3 font-weight-normal">Change your password?</h1>
+
+  <div class="checkbox mb-3">
+    <label for="inputEmail" class="sr-only">New password</label>
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+    <% end %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", placeholder: "Password", required: true %>
+  </div>
+
+  <div class="checkbox mb-3">
+    <label for="inputEmail" class="sr-only">Confirm new password</label>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm Password", required: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Change my password", class: 'btn btn-primary' %>
+  </div>
+  <%= render "users/shared/links" %>
+
+<% end %>

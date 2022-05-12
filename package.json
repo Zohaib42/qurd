@@ -1,0 +1,15 @@
+{
+  "name": "rails-api-with-web-base",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^4.0.7"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.8.0"
+  },
+  "scripts": {
+    "start": "foreman start",
+    "dev": "foreman start -f Procfile.dev",
+    "console": "foreman run rails c"
+  }
+}

@@ -1,0 +1,7 @@
+<% if @event.save %>
+  $("#event-modal").modal('hide');
+  toastr.success('Event is successfully update.');
+  $("#<%= dom_id(@event) %>" ).replaceWith( "<%= j render 'admin_panel/events/event', event: @event %>" );
+<% else %>
+  $("#event-modal").html("<%= j render 'admin_panel/events/form', event: @event %>");
+<% end %>

@@ -1,0 +1,5 @@
+<% if @college.valid? %>
+  location.href = '/admin_panel/colleges'
+<% else %>
+  $('.college-modal-body').html("<%= j render('form', college: @college) %>");
+<% end %>

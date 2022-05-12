@@ -1,0 +1,59 @@
+<div class="modal-dialog">
+  <%= form_for [:admin_panel, event], remote: true do |f| %>
+    <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Create New Event</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+      <div class="modal-body">
+        <%= render 'shared/error', object: event %>
+
+        <div class="form-group">
+          <%= f.file_field :cover, {class: 'form-control' }  %>
+        </div>
+
+        <% if f.object.cover.attached? %>
+          <%= image_tag event.cover.url, size: "50x50" %>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :title, 'Event Title' %>
+          <%= f.text_field :title, class: 'form-control', required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description, ' Event Description' %>
+          <%= f.text_area :description, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :price, 'Event Price' %>
+          <%= f.text_field :price, class: 'form-control'%>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :location, 'Where' %>
+          <%= f.text_field :location, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :start_at, 'Start Date/Time' %>
+          <%= f.datetime_field :start_at, class: 'form-control', required: true, value: f.object.start_at&.strftime("%Y-%m-%dT%H:%M") %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :end_at, 'End Date/Time(optional)' %>
+          <%= f.datetime_field :end_at, class: 'form-control', value: f.object.end_at&.strftime("%Y-%m-%dT%H:%M") %>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+

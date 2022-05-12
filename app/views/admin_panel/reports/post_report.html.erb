@@ -1,0 +1,63 @@
+<div class="back-btn">
+  <%= link_to admin_panel_reports_path(back_to_tab: 'post_reports_tab') do %>
+    <i class="fas fa-chevron-left"></i>
+    <span>Back</span>
+  <% end %>
+</div>
+
+<div class="h3 mb-4 mt-4">Post Reports</div>
+
+<table class="table table-borderless table-hover">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Posted By</th>
+    <th scope="col">Reported By</th>
+    <th scope="col">Report Reason</th>
+    <th scope="col">Report Date</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th scope="row"><%= @post_report.id %></th>
+      <td><%= @post_report.post.creator.first_name %></td>
+      <td><%= optional_string @post_report.reporter&.first_name %></td>
+      <td><%= @post_report.reason %></td>
+      <td><%= @post_report.created_at.strftime("%d %B %Y")  %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="mt-5 mb-5"><hr></div>
+
+<div class="h3 mb-4">Post</div>
+
+<div class="mb-3">
+  <div class="form-group">
+    <strong> Title</strong>
+    <span class="d-block"><%= @post_report.post.title %></span>
+  </div>
+
+  <div class="form-group">
+    <strong> Content</strong>
+    <span class="d-block"><%= @post_report.post.description %></span>
+  </div>
+
+  <div class="mt-5">
+    <% if @post_report.post.link.present? %>
+      <%= link_to 'Open Link', @post_report.post.link, target: '_blank', class: 'btn btn-primary' %>
+    <% end %>
+
+    <% if @post_report.post.attachment.attached? %>
+      <%= link_to 'Open Attachment', @post_report.post.attachment.url, target: '_blank', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="mt-5">
+  <div class="h3 mb-4">Actions</div>
+
+  <%= link_to 'Close Report', close_reports_admin_panel_report_path(klass: 'Post'), data: { confirm: 'Are you sure, you want to close this report?' }, class: 'btn btn-outline-secondary' %>
+  <%= link_to 'Remove Post', admin_panel_post_path(@post_report.post), method: :delete, data: { confirm: 'Are you sure, you want to delete this post?' }, class: 'btn btn-danger ml-4' %>
+</div>

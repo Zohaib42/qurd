@@ -1,0 +1,31 @@
+<table class="table table-borderless table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Posted By</th>
+      <th scope="col">Reported By</th>
+      <th scope="col">Report Reason</th>
+      <th scope="col">Report Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% post_reports.find_each do |post_report| %>
+      <tr>
+        <td><%= post_report.post.creator.first_name %></td>
+        <td><%= optional_string post_report.reporter&.first_name %></td>
+        <td><%= post_report.reason %></td>
+        <td><%= post_report.created_at.strftime("%d %B %Y") %></td>
+        <td>
+          <%= link_to post_report_admin_panel_report_path(post_report), data: { toggle: 'tooltip' }, title: 'View Report' do %>
+            <i class="fas fa-eye"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="report_paginate">
+  <%= paginate post_reports, remote: true, param_name: :post_report_page %>
+</div>

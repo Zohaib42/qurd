@@ -1,0 +1,70 @@
+en:
+  helpers:
+    label:
+      user:
+        email: 'Email Id'
+        first_name: 'First Name'
+        last_name: 'Last Name'
+        bio: 'Bio'
+    placeholder:
+      user:
+        email: 'Email Id'
+        first_name: 'First Name'
+        last_name: 'Last Name'
+        bio: 'Write something about you.'
+    submit:
+      create: "Create %{model}"
+      update: "Update %{model}"
+
+  custom:
+    buttons:
+      back: 'Go Back'
+    messages:
+      user:
+        update: "User updated successfully!"
+    header:
+      navbar:
+        links:
+          profile: 'Profile'
+          logout: 'Logout'
+    pages:
+      user:
+        edit:
+          heading: 'Edit Profile'
+          submit: 'Update profile'
+
+#==================================================== FOR API ====================================================
+  activerecord:
+    errors:
+      messages:
+        not_found: 'Oops! Record not found'
+      models:
+        member:
+          attributes:
+            name:
+              blank: 'Oops! This is a mandatory field'
+            email:
+              blank: 'Oops! This is a mandatory field'
+              invalid: 'Oops! This is not a valid email'
+              taken: 'Oops! This email is already taken'
+            username:
+              taken: 'Oops! This username is already taken'
+            password:
+              blank: 'Oops! This is a mandatory field'
+              invalid: 'Sorry! We need min 6 characters, one capital letter, one number'
+              too_long: 'Sorry! Password is too long (maximum is 100 characters)'
+            active_relationships:
+              invalid: 'Oops! You are already following one of requested member'
+
+  #==================================================== CUSTOM HELPER ====================================================
+  member:
+    login:
+      failure:
+        invalid: 'Oops! The email or password that you entered is incorrect.'
+        unconfirmed: 'Oops! You need to confirm your email.'
+    change_password:
+      wrong_password: 'Oops! Wrong existing password'
+    registrations:
+      signed_up: 'Welcome! You have signed up successfully.'
+    confirmations:
+      invalid: 'Oops! You have entered an incorrect code.'

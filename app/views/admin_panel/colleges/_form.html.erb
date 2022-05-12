@@ -1,0 +1,26 @@
+<%= form_with model: [:admin_panel, college], local: false do |f| %>
+  <div class="container">
+    <div class="college-modal-body mt-3">
+      <%= render 'shared/error', object: college %>
+    </div>
+    <div class="form-group">
+      <%= f.label :college_name %>
+      <%= f.text_field :name, class: "form-control", placeholder: "yale university", required: true  %>
+    </div>
+    <div id='college_domains'>
+      <%= f.label :College_Domains %>
+      <%= f.fields_for :college_domains, f.object.persisted? ? f.object.college_domains : f.object.college_domains.build  do |domain_form| %>
+        <%= render 'college_domain_fields', f: domain_form %>
+      <% end %>
+    </div>
+    <div class='form-group'>
+      <%= link_to_add_association f, :college_domains do %>
+        <i class="fas fa-plus-circle"></i>
+        Add another domain
+      <% end %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %> 

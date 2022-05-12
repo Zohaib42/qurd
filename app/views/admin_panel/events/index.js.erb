@@ -1,0 +1,5 @@
+$("#upcoming-events").html("<%= j render('admin_panel/events/upcoming', events: @upcoming_events) %>");
+$("#upcoming-events-pagination").html("<%= j(paginate(@upcoming_events, remote: true, param_name: :upcoming_events_page)) %>");
+
+$("#historical-events").html("<%= j render('admin_panel/events/historical', events: @historical_events) %>");
+$("#historical-events-pagination").html("<%= j paginate(@historical_events, remote: true, param_name: :historical_events_page) %>");

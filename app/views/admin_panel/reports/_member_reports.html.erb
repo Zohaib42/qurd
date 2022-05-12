@@ -1,0 +1,31 @@
+<table class="table table-borderless table-hover">
+  <thead>
+    <tr>
+      <th scope="col">User Reported</th>
+      <th scope="col">Reported By</th>
+      <th scope="col">Report Reason</th>
+      <th scope="col">Report Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% member_reports.find_each do |member_report| %>
+      <tr>
+        <td><%= optional_string member_report.reported&.first_name %></td>
+        <td><%= optional_string member_report.reporter&.first_name %></td>
+        <td><%= member_report.reason %></td>
+        <td><%= member_report.created_at.strftime("%d %B %Y") %></td>
+        <td>
+          <%= link_to member_report_admin_panel_report_path(member_report), data: { toggle: 'tooltip' }, title: 'View Report' do %>
+            <i class="fas fa-eye"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="member_paginate">
+  <%= paginate member_reports, remote: true %>
+</div>

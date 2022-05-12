@@ -1,0 +1,25 @@
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'form-signin login-screen', id: 'login-form', method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.hidden_field :reset_password_token %>
+  <div class="login-logo text-nowrap">Change your password</div>
+
+  <div class="form-group">
+    <%= f.label :password, "New password" %><br />
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+    <% end %>
+    <%= f.password_field :password, class: "form-control", autofocus: true, autocomplete: "new-password" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, "Confirm new password" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" , class: "form-control"%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Change my password", class: "btn btn-lg btn-primary btn-block" %>
+  </div>
+  <div class="d-flex justify-content-center mt-4">
+    <%= link_to "Log in", new_user_session_path %><br />
+  </div>
+<% end %>

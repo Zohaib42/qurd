@@ -1,0 +1,31 @@
+<%= render "admin_panel/members/shared/search", url: admin_panel_members_path %>
+
+<table class="table table-borderless table-hover">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">User Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @members.find_each do |member| %>
+      <tr>
+        <th scope="row"><%= member.id %></th>
+        <td><%= member.name %></td>
+        <td><%= member.username %></td>
+        <td><%= member.email %></td>
+        <td>
+          <%= link_to admin_panel_member_path(member), data: { toggle: 'tooltip' }, title: 'View Member' do %>
+            <i class="fas fa-eye"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @members %>

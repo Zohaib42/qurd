@@ -1,0 +1,31 @@
+
+<div class="back-btn">
+  <%= link_to admin_panel_members_path do %>
+    <i class="fas fa-chevron-left"></i>
+    <span>Back</span>
+  <% end %>
+</div>
+
+<div class="member-show">
+  <div class="form-group">
+    <label><strong>Name</strong></label>
+    <p><%= @member.name %></p>
+  </div>
+  <div class="form-group">
+    <label><strong>User Name</strong></label>
+    <p><%=@member.username %></p>
+  </div>
+  <div class="form-group">
+    <label><strong>Email</strong></label>
+    <p><%= @member.email %></p>
+  </div>
+  <div class="form-group">
+    <label><strong>Mobile Number</strong></label>
+    <p><%= @member.mobile %></p>
+  </div>
+</div>
+
+<h4 class="mt-5 mb-5"><strong>Actions</strong></h4>
+
+<%= mail_to @member.email, 'Email User', class: 'btn btn-primary mr-4' %>
+<%= link_to "Remove User", admin_panel_member_path(@member), method: :delete, data: { confirm:  'Are you sure you want to delete members?' }, class: 'btn btn-danger' %>

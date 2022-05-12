@@ -1,0 +1,68 @@
+<div id="sidebar-wrapper">
+  <div class="sidebar-logo">
+    <%= link_to admin_panel_root_path, class: 'navbar-brand' do %>
+      Quadio
+    <% end %>
+  </div>
+
+  <div class="list-group list-group-flush">
+    <ul>
+      <% if can? [:manage], Member %>
+        <li>
+          <%= link_to admin_panel_members_path do %>
+            <i class="fas fa-users"></i>
+            <span>Users</span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if can? [:manage], College %>
+        <li>
+          <%= link_to admin_panel_colleges_path do %>
+            <i class="fas fa-network-wired"></i>
+            <span>Colleges</span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if can? [:manage], MemberReport %>
+        <li>
+          <%= link_to admin_panel_reports_path do %>
+            <i class="fas fa-users"></i>
+            <span>
+              Reports
+              <% if @reports_count.present? %>
+                <span class="count"><%= @reports_count %></span>
+              <% end %>
+            </span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if can? [:manage], Event %>
+        <li>
+          <%= link_to admin_panel_events_path do %>
+          <i class="fas fa-calendar-check"></i>
+            <span>Events</span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <li class="bottom-fixed">
+        <%= link_to terms_and_conditions_path, target: '_blank' do %>
+          <i class= "margin-bottom fa fa-gavel"></i>
+          <span>
+            Terms and conditions
+          </span>
+        <% end %>
+
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt"></i>
+          <span>
+            <%= t('custom.header.navbar.links.logout') %>
+          </span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

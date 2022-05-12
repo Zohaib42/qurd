@@ -1,0 +1,10 @@
+update_post_hotness:
+  every: 5m
+  queue: default
+  class: UpdatePostHotnessWorker
+  enabled: true
+update_member_hotness:
+  every: 5m
+  queue: default
+  class: UpdateMemberHotnessWorker
+  enabled: true

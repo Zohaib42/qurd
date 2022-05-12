@@ -1,0 +1,7 @@
+<% if @event.save %>
+  $("#event-modal").modal('hide');
+  $("#events-section").append("<%= j render 'admin_panel/events/event', event: @event %>");
+  toastr.success('Event is successfully created.');
+<% else %>
+  $("#event-modal").html("<%= j render 'admin_panel/events/form', event: @event %>");
+<% end %>
