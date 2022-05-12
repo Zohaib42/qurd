@@ -26,6 +26,4 @@ Please contact developer or get ENV variables from Heroku.
 # Mailer
 We are using LetterOpener on the development, Maitrap on quadio-development and Gmail SMTP on quadio-staging instance.
 
-# Mailtrap login credentials
-email: farzam.azhar7777@gmail.com
-password: mywork123#
+
